@@ -1,4 +1,4 @@
-# tweet_app
+# rails-twitter-clone
 
 ## 概要
 MVCモデルの理解のため  
