@@ -1,0 +1,23 @@
+<div class="posts_list__contributor--edit">
+  <p class="posts_list__contributor__tmb">
+    <img src="<%= "/user_images/#{@user.image_name}" %>"><br>
+  </p>
+  <p class="posts_list__contributor__edit">
+    <% if @login_user.id == @user.id %>
+    <%= link_to("プロフィールを編集する","/users/#{@user.id}/edit")%>
+    <% end %>
+  </p>
+</div>
+<p class="posts_list__contributor__detail">
+  <%= @user.name %> さんがいいねした投稿<br>
+</p>
+
+<ul class="posts_list">
+  <% @likes.each do |like| %>
+  <% post = Post.find_by(id: like.post_id) %>
+  <li>
+    <%= post.user.name %>
+    <%= link_to(post.content,"/posts/#{post.id}") %>
+  </li>
+  <% end %>
+</ul>

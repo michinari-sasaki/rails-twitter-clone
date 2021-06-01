@@ -1,0 +1,33 @@
+<ul class="posts_list">
+  <li>
+    <% @new_post.errors.full_messages.each do |messages| %>
+    <%= messages %><br>
+    <% end %>
+    <%= form_tag("/posts/create") do %>
+    <textarea name="content"></textarea><br>
+    <input type="submit" value="投稿">
+    <% end %>
+  </li>
+  <% @posts.each do |post| %>
+  <li>
+    <% if post.user %>
+    <%= link_to("/users/#{post.user.id}") do %>
+    <div class="posts_list__contributor">
+      <p class="posts_list__contributor__tmb">
+        <img src="/user_images/<%= post.user.image_name %>" alt="">
+      </p>
+      <p class="posts_list__contributor__detail">
+        <%= post.user.name %><br>
+        <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S')%>
+      </p>
+    </div>
+    <% end %>
+    <% end %>
+    <%= link_to("/posts/#{post.id}") do%>
+    <p class="posts_list__contributor__content">
+      <%= post.content %>
+    </p>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

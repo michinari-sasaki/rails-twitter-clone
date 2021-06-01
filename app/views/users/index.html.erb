@@ -1,0 +1,15 @@
+<h2>ユーザー一覧</h2>
+<ul class="posts_list">
+  <% @user.each do |user| %>
+  <li>
+    <div class="posts_list__contributor">
+      <p class="posts_list__contributor__tmb">
+        <img src="/user_images/<%= user.image_name %>" alt="">
+      </p>
+      <p class="posts_list__contributor__detail">
+        <%= link_to(user.name,"/users/#{user.id}") %>
+      </p>
+    </div>
+  </li>
+  <% end %>
+</ul>

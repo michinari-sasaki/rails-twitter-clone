@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TweetApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__top">
+      <%= link_to("/") do %>
+      <h1 class="header__top__logo"><span>俺</span><span>の</span>ツイッター</h1>
+      <% end %>
+      <div class="header__top__name">
+        <% if session[:user_id] %>
+        <%= "#{@login_user.name}" %><span>さん</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="header__links">
+      <% if session[:user_id] %>
+      <%= link_to("ホーム","/posts/index") %>
+      <%= link_to("ユーザー一覧","/users/index")%>
+      <%= link_to("ログアウト","/logout")%>
+      <% else %>
+      <%= link_to("Top","/posts/index") %>
+      <%= link_to("ユーザー新規登録","/signup") %>
+      <%= link_to("ログイン","/login") %>
+      <% end %>
+    </div>
+  </header>
+  <div class="content">
+    <div class="content__inner">
+      <% if flash[:notice] %>
+      <%= flash[:notice] %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+  <footer class="footer">
+    <%= link_to("About","/about") %>
+  </footer>
+</body>
+</html>

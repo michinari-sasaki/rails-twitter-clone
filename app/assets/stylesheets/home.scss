@@ -1,0 +1,115 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+  line-height: 1.6;
+}
+body {
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体";
+  box-sizing: border-box;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+p{
+  padding: 0;
+  margin: 0;
+}
+.header {
+  max-width: 880px;
+  margin: 0 auto;
+  &__top {
+    display: flex;
+    align-items: center;
+    &__logo {
+      display: inline-block;
+      padding: 8px 11px 0;
+      background: #f40104;
+      color: #fff;
+      font-family: "Hind", sans-serif;
+      font-weight: bold;
+      line-height: 1.2;
+      font-size: 18px;
+      font-style: italic;
+      span {
+        font-family: inherit;
+        font-size: 32px;
+        &:nth-of-type(2){
+          font-family: inherit;
+          font-size: 12px;
+        }
+      }
+    }
+    &__name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 24px;
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+  &__links {
+    margin: 16px auto 0;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+  }
+}
+.content {
+  width: 100%;
+  max-width: 880px;
+  min-height: 500px;
+  margin: 0 auto;
+  &__inner {
+    padding: 40px;
+  }
+}
+.about {
+  text-align: center;
+  margin-top: 160px;
+}
+.footer {
+  max-width: 880px;
+  padding: 16px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.posts_list{
+  list-style-type: none;
+  li{
+    border: 1px solid #000;
+    margin-bottom: 16px;
+    padding: 16px;
+  }
+  &__contributor {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &--edit{
+      @extend .posts_list__contributor;
+      justify-content: space-between;
+    }
+    &__tmb{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin-right: 16px;
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+      }
+    }
+    &__detail {
+    }
+    &__edit {
+
+    }
+    &__content{
+      margin-top: 16px;
+    }
+  }
+}

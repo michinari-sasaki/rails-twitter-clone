@@ -1,0 +1,25 @@
+<ul class="posts_list">
+  <li>
+    <%= link_to("/users/#{@post.user.id}") do %>
+    <div class="posts_list__contributor">
+      <p class="posts_list__contributor__tmb">
+        <img src="/user_images/<%= @user.image_name %>" alt="">
+      </p>
+      <p class="posts_list__contributor__detail">
+        <%= @user.name %><br>
+        <%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S')%>
+      </p>
+    </div>
+    <% end %>
+    <%= @post.content%><br>
+    <%= @likes_count %>
+    <% if Like.find_by(post_id: @post.id, user_id: @login_user.id)%>
+    <%= link_to("いいね取消し🤍","/likes/#{@post.id}/destroy",{method: "post"})%><br>
+    <% else %>
+    <%= link_to("いいね❤️","/likes/#{@post.id}/create",{method: "post"})%><br>
+    <% end %>
+    <% if @login_user.id == @post.user_id %>
+    <%= link_to("編集","/posts/#{@post.id}/edit") %>&nbsp;<%= link_to("削除","/posts/#{@post.id}/destroy",{method: "post"})%>
+    <% end %>
+  </li>
+</ul>

@@ -1,0 +1,16 @@
+<h2>プロフィールを編集</h2>
+<% @user.errors.full_messages.each do |messages| %>
+<%= messages %><br>
+<% end %>
+
+<%= form_tag("/users/#{@user.id}/update",{multipart: true}) do%>
+名前<br>
+<input name="name" value="<%= @user.name %>"><br>
+画像<br>
+<input type="file" name="image"><br>
+メール<br>
+<input name="email" value="<%= @user.email %>"><br>
+パスワード<br>
+<input type="password" name="password"><br>
+<input type="submit" value="保存"><br>
+<% end %>
